@@ -3,20 +3,34 @@ class Solution {
         int n = arr.length;
         
         int[] ans = new int[2];
-        for(int i=0;i<arr.length;i++){
-           for(int j = i+1;j<arr.length;j++){
-               if(arr[i]+arr[j]==target) {
-                ans[0] = i;
-                ans[1] = j;
-                return ans;
-               }
-           }
+    //     for(int i=0;i<arr.length;i++){
+    //        for(int j = i+1;j<arr.length;j++){
+    //            if(arr[i]+arr[j]==target) {
+    //             ans[0] = i;
+    //             ans[1] = j;
+    //             return ans;
+    //            }
+    //        }
           
-       }
+    //    }
     
-       return ans;
-    }
+       
 
+        HashMap<Integer,Integer> map = new HashMap<>();
+        for(int i =0; i<n;i++){
+            if(map.containsKey(target-arr[i])){
+                ans[0] = i;
+                ans[1] = map.get(target-arr[i]);
+                
+            }
+            map.put(arr[i],i);
+        }
+        return ans;
+
+
+        
+    
+    }
     }
 
 
