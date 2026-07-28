@@ -8,6 +8,8 @@ class Solution {
                 if(mat[i][j] == 0){
                     count ++;
                 }
+                if(mat[i][j]==1) break;
+                
                 
             }
         }
