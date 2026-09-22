@@ -1,7 +1,20 @@
 class Solution {
     public int findMin(int[] arr) {
-        Arrays.sort(arr);
-        return arr[0];
+        int lo = 0;
+        int hi = arr.length -1;
+        int mn = Integer.MAX_VALUE;
+        while(lo<=hi){
+            int mid = (lo+hi)/2;
+           if(arr[lo] <= arr[mid]){
+            mn  = Math.min(mn,arr[lo]);
+            lo = mid + 1;
+           }
+           else{
+                hi = mid - 1;
+                mn = Math.min(mn,arr[mid]);
+           }
+        }
+        return mn;
     }
 }
 
