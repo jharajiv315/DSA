@@ -6,10 +6,10 @@ class Solution {
         int cnt = 0;
         while(r >= 0 && c < m){
         if(mat[r][c] < 0){
-            --r;
+            r--;
             cnt += m - c;
         }
-        else ++c;
+        else c++;
         }
        
         return cnt;
