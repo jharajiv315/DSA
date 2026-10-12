@@ -1,30 +1,51 @@
+
 class Solution {
-    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        ListNode dummyHead = new ListNode(0);
-        ListNode tail = dummyHead;
+    public ListNode addTwoNumbers(ListNode num1, ListNode num2) {
+
+        ListNode dummyHead = new ListNode(-1);
+        ListNode curr = dummyHead;
+
+        ListNode temp1 = num1;
+        ListNode temp2 = num2;
+
         int carry = 0;
 
-        while (l1 != null || l2 != null || carry != 0) {
-            int digit1 = (l1 != null) ? l1.val : 0;
-            int digit2 = (l2 != null) ? l2.val : 0;
+        while (temp1 != null || temp2 != null) {
 
-            int sum = digit1 + digit2 + carry;
-            int digit = sum % 10;
+            int sum = carry;
+
+            if (temp1 != null) {
+                sum += temp1.val;
+            }
+
+            if (temp2 != null) {
+                sum += temp2.val;
+            }
+
+            ListNode newNode = new ListNode(sum % 10);
             carry = sum / 10;
 
-            ListNode newNode = new ListNode(digit);
-            tail.next = newNode;
-            tail = tail.next;
+            curr.next = newNode;
+            curr = curr.next;
 
-            l1 = (l1 != null) ? l1.next : null;
-            l2 = (l2 != null) ? l2.next : null;
+            if (temp1 != null) {
+                temp1 = temp1.next;
+            }
+
+            if (temp2 != null) {
+                temp2 = temp2.next;
+            }
         }
 
-        ListNode result = dummyHead.next;
-        dummyHead.next = null;
-        return result;
+        if (carry != 0) {
+            ListNode newNode = new ListNode(carry);
+            curr.next = newNode;
+        }
+
+        return dummyHead.next;
     }
 }
+
 
 // Synced seamlessly with LeetHub Pro
 // Pro features: https://bit.ly/leethubpro | Free version: https://bit.ly/leethubv4
