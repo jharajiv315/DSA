@@ -5,7 +5,7 @@ class Solution {
         int n = nums.length;
         int i = 0;
 
-        // Step 1: Put numbers at their correct indices
+      
         while (i < n) {
 
             int correct = nums[i] - 1;
@@ -23,7 +23,6 @@ class Solution {
             }
         }
 
-        // Step 2: Find first missing positive
         for (int j = 0; j < n; j++) {
 
             if (nums[j] != j + 1) {
